@@ -8,11 +8,11 @@ import {
   SEARCH_BUTTON,
   costs,
 } from './constant.js';
+import handleClickEvent from './handleEvent.js';
 import Dijkstra from './utils/Dijkstra.js';
 
-export function initPage() {
+function makeHeader() {
   const $app = document.getElementById('app');
-
   $app.insertAdjacentHTML('beforeend', `
   <header>
     <h1>🚇 지하철 길찾기</h1>
@@ -26,6 +26,14 @@ export function initPage() {
     </p>
     <button id="${SEARCH_BUTTON}">길 찾기</button>
   </header>`);
+}
+
+export function initPage(distGraph, timeGraph) {
+  makeHeader();
+  // TODO: makeResultDiv;
+
+  const $button = document.getElementById(SEARCH_BUTTON);
+  $button.addEventListener('click', () => handleClickEvent(distGraph, timeGraph));
 }
 
 export function initGraph() {
