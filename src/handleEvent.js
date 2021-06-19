@@ -4,6 +4,7 @@ import {
   DEPARTURE_STATION_INPUT,
   ARRIVAL_STATION_INPUT,
   MIN_DISTANCE_INPUT,
+  RESULT_DIV,
   stations,
 } from './constant.js';
 
@@ -30,7 +31,9 @@ export default function handleClickEvent(distGraph, timeGraph) {
   const $app = document.getElementById('app');
 
   if (!isValidInput(graph)) {
+    $app.querySelector(`#${RESULT_DIV}`).style.visibility = 'hidden';
     return;
   }
   // TODO: makeResult
+  $app.querySelector(`#${RESULT_DIV}`).style.visibility = 'visible';
 }

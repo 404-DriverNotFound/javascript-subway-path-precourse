@@ -6,6 +6,10 @@ import {
   MIN_TIME_INPUT,
   SEARCH_TYPE,
   SEARCH_BUTTON,
+  RESULT_DIV,
+  DISTANCE_TD,
+  TIME_TD,
+  PATH_TD,
   costs,
 } from './constant.js';
 import handleClickEvent from './handleEvent.js';
@@ -28,9 +32,39 @@ function makeHeader() {
   </header>`);
 }
 
+function makeResultDiv() {
+  const $app = document.getElementById('app');
+  $app.insertAdjacentHTML('beforeend', `
+  <div id="${RESULT_DIV}">
+    <h2>📝 결과</h2>
+    <h3></h3>
+    <table>
+      <thead>
+        <tr>
+          <th>총 거리</th>
+          <th>총 소요 시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="${DISTANCE_TD}"></td>
+          <td id="${TIME_TD}"></td>
+        </tr>
+        <tr>
+          <td id="${PATH_TD}" colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  `);
+}
+
 export function initPage(distGraph, timeGraph) {
   makeHeader();
-  // TODO: makeResultDiv;
+  makeResultDiv();
+
+  const $app = document.getElementById('app');
+  $app.querySelector(`#${RESULT_DIV}`).style.visibility = 'hidden';
 
   const $button = document.getElementById(SEARCH_BUTTON);
   $button.addEventListener('click', () => handleClickEvent(distGraph, timeGraph));
