@@ -1,6 +1,12 @@
 # 🚇 지하철 노선도 경로 조회 미션
 - 등록된 지하철 노선도에서 경로를 조회하는 기능을 구현한다.
 
+<br>
+
+## ✅ [구현할 기능 목록](https://github.com/hyo-choi/javascript-subway-path-precourse/blob/main/docs/FEATURE.md)
+
+<br>
+
 ## 🚀 기능 요구사항
 > 프리코스 3주차 미션에서 사용한 코드를 참고해도 무관하다.
 
