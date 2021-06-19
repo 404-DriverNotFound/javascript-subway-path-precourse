@@ -4,6 +4,10 @@ export const MIN_DISTANCE_INPUT = 'min-distance-input';
 export const MIN_TIME_INPUT = 'min-time-input';
 export const SEARCH_TYPE = 'search-type';
 export const SEARCH_BUTTON = 'search-button';
+export const RESULT_DIV = 'result-container';
+export const DISTANCE_TD = 'distance-td';
+export const TIME_TD = 'time-td';
+export const PATH_TD = 'path-td';
 
 export const stations = [
   '교대',
@@ -61,8 +65,8 @@ export const costs = [
   },
   {
     stations: ['남부터미널', '양재'],
-    distance: 1,
-    time: 1,
+    distance: 6,
+    time: 5,
   },
   {
     stations: ['양재', '매봉'],
