@@ -6,7 +6,9 @@ import {
   MIN_TIME_INPUT,
   SEARCH_TYPE,
   SEARCH_BUTTON,
+  costs,
 } from './constant.js';
+import Dijkstra from './utils/Dijkstra.js';
 
 export function initPage() {
   const $app = document.getElementById('app');
@@ -26,6 +28,12 @@ export function initPage() {
   </header>`);
 }
 
-export function initData() {
-  // TODO: initData
+export function initGraph() {
+  const distGraph = new Dijkstra();
+  const timeGraph = new Dijkstra();
+  costs.forEach((cost) => {
+    distGraph.addEdge(cost.stations[0], cost.stations[1], cost.distance);
+    timeGraph.addEdge(cost.stations[0], cost.stations[1], cost.time);
+  });
+  return [distGraph, timeGraph];
 }
