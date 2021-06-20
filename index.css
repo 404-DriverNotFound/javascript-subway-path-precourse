@@ -1,0 +1,9 @@
+td, th, table {
+  border: 1px solid #999999;
+  text-align: center;
+  box-shadow: -1px -1px #999999;
+}
+
+table {
+  box-shadow: 1px 1px #999999;
+}
