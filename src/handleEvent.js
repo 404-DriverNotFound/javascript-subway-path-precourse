@@ -50,8 +50,8 @@ function renewTable(graph) {
 
   const path = graph.findShortestPath(departure, arrival);
   const { distance, time } = calcCost(path);
-  $distanceTd.innerText = distance;
-  $timeTd.innerText = time;
+  $distanceTd.innerText = `${distance}km`;
+  $timeTd.innerText = `${time}분`;
   $pathTd.innerText = path.join('→');
 }
 
@@ -59,12 +59,13 @@ export default function handleClickEvent(distGraph, timeGraph) {
   const isMinDist = document.getElementById(MIN_DISTANCE_INPUT).checked;
   const graph = isMinDist ? distGraph : timeGraph;
   const $app = document.getElementById('app');
+  const $resultDiv = document.getElementById(RESULT_DIV);
 
   if (!isValidInput(graph)) {
-    $app.querySelector(`#${RESULT_DIV}`).style.visibility = 'hidden';
+    $resultDiv.style.visibility = 'hidden';
     return;
   }
   $app.querySelector('h3').innerText = isMinDist ? '최단거리' : '최소시간';
   renewTable(graph);
-  $app.querySelector(`#${RESULT_DIV}`).style.visibility = 'visible';
+  $resultDiv.style.visibility = 'visible';
 }
