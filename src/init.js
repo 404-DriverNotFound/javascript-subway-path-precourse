@@ -10,10 +10,8 @@ import {
   DISTANCE_TD,
   TIME_TD,
   PATH_TD,
-  costs,
 } from './constant.js';
 import handleClickEvent from './handleEvent.js';
-import Dijkstra from './utils/Dijkstra.js';
 
 function makeHeader() {
   const $app = document.getElementById('app');
@@ -32,6 +30,19 @@ function makeHeader() {
   </header>`);
 }
 
+function makeTableRow(tag, property = null, contents = null) {
+  const arr = [];
+  const length = Math.max((property && property.length), (contents && contents.length));
+  for (let i = 0; i < length; i += 1) {
+    arr.push(`<${tag} ${(property && property[i]) || ''}>${(contents && contents[i]) || ''}</${tag}>`);
+  }
+  return `
+  <tr>
+    ${arr.join('\n')}
+  </tr> 
+  `;
+}
+
 function makeResultDiv() {
   const $app = document.getElementById('app');
   $app.insertAdjacentHTML('beforeend', `
@@ -40,26 +51,17 @@ function makeResultDiv() {
     <h3></h3>
     <table>
       <thead>
-        <tr>
-          <th>총 거리</th>
-          <th>총 소요 시간</th>
-        </tr>
+        ${makeTableRow('th', null, ['총 거리', '총 소요 시간'])}
       </thead>
       <tbody>
-        <tr>
-          <td id="${DISTANCE_TD}"></td>
-          <td id="${TIME_TD}"></td>
-        </tr>
-        <tr>
-          <td id="${PATH_TD}" colspan="2"></td>
-        </tr>
+        ${makeTableRow('td', [`id="${DISTANCE_TD}"`, `id="${TIME_TD}"`])}
+        ${makeTableRow('td', [`id="${PATH_TD}" colspan="2"`])}
       </tbody>
     </table>
-  </div>
-  `);
+  </div>`);
 }
 
-export function initPage(distGraph, timeGraph) {
+export default function initPage(distGraph, timeGraph) {
   makeHeader();
   makeResultDiv();
 
@@ -68,14 +70,4 @@ export function initPage(distGraph, timeGraph) {
 
   const $button = document.getElementById(SEARCH_BUTTON);
   $button.addEventListener('click', () => handleClickEvent(distGraph, timeGraph));
-}
-
-export function initGraph() {
-  const distGraph = new Dijkstra();
-  const timeGraph = new Dijkstra();
-  costs.forEach((cost) => {
-    distGraph.addEdge(cost.stations[0], cost.stations[1], cost.distance);
-    timeGraph.addEdge(cost.stations[0], cost.stations[1], cost.time);
-  });
-  return [distGraph, timeGraph];
 }
