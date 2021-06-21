@@ -19,13 +19,13 @@ export default class SubwayPathFinder {
     this.$app = document.querySelector('#app');
     this.$app.innerHTML = '<h1>🚇 지하철 길찾기</h1>';
     this.$app.innerHTML += '    <form>\n'
-      + '        <div><label for="departure-station-name-input">출발역</label><input type="text" id="departure-station-name-input" /></div>\n'
-      + '        <div><label for="arrival-station-name-input">도착역</label><input type="text" id="arrival-station-name-input" /></div>\n'
-      + '        <div>\n'
+      + '        <p><label for="departure-station-name-input">출발역</label><input type="text" id="departure-station-name-input" /></p>\n'
+      + '        <p><label for="arrival-station-name-input">도착역</label><input type="text" id="arrival-station-name-input" /></p>\n'
+      + '        <p>\n'
       + '            <input type="radio" name="search-type" value="최단거리" checked/><label>최단거리</label>\n'
       + '            <input type="radio" name="search-type" value="최소시간"/><label>최소시간</label>\n'
-      + '        </div>\n'
-      + '        <div><input type="button" value="길 찾기" id="search-button" /></div>\n'
+      + '        </p>\n'
+      + '        <p><input type="button" value="길 찾기" id="search-button" /></p>\n'
       + '    </form>\n'
       + '    <div id="result"></div>';
   }
@@ -90,6 +90,7 @@ export default class SubwayPathFinder {
       + '                <td>총 소요시간</td>\n'
       + '            </tr>\n'
       + '            </thead>\n'
+      + '            <tbody>\n'
       + '            <tr>\n'
       + `                <td>${totalPath}km</td>\n`
       + `                <td>${totalTime}분</td>\n`
@@ -97,6 +98,7 @@ export default class SubwayPathFinder {
       + '            <tr>\n'
       + `                <td colspan="2">${result}</td>\n`
       + '            </tr>\n'
+      + '            </tbody>\n'
       + '        </table>';
   }
 
