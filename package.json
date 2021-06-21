@@ -1,0 +1,16 @@
+{
+  "name": "javascript-subway-path-precourse",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/cos18/javascript-subway-path-precourse",
+  "author": "Sungwoo Park <codest99@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
+  },
+  "scripts": {
+    "lint": "eslint src/*.js"
+  }
+}

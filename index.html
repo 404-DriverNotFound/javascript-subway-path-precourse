@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>지하철 길찾기</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="app">
+    <div id="input-container">
+        <h1>🚇 지하철 길찾기</h1>
+        출발역 <input id="departure-station">
+        <br><br>
+        도착역 <input id="arrival-station">
+        <br><br>
+        <input type="radio" name="search-by" value="distance" checked>최단거리</input>
+        <input type="radio" name="search-by" value="time">최소시간</input>
+        <br><br>
+        <input type="button" id="find-location" value="길 찾기">
+    </div>
+    <div id="result-container">
+        <h2>📝 결과</h2>
+        <h3 id="result-search-by"></h3>
+        <table>
+            <tr>
+                <th>총 거리</th>
+                <th>총 소요 시간</th>
+            </tr>
+            <tr>
+                <td id="distance-result"></td>
+                <td id="time-result"></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="route-result"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="module" src="src/index.js"></script>
 </body>
 </html>
